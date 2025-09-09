@@ -6,7 +6,7 @@
 /*   By: nsaillez <nsaillez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 15:05:35 by nsaillez          #+#    #+#             */
-/*   Updated: 2025/09/08 15:26:29 by nsaillez         ###   ########.fr       */
+/*   Updated: 2025/09/09 09:41:54 by nsaillez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,16 @@ class Fixed
     public:
         Fixed();
         Fixed(Fixed &obj);
-        Fixed& operator= (Fixed& obj);
+        Fixed& operator= (Fixed& obj)
+        {
+            std::cout << "Copy assignment operator called" << std::endl;
+            this->setRawBits(obj.getRawBits());
+            
+            return (*this);
+        };
         ~Fixed();
+        int getRawBits(void) const;
+        void setRawBits(int const raw);
 };
 
 #endif
